@@ -1,12 +1,13 @@
+import { NavLink, Link } from 'react-router-dom';
 import styles from './Header.module.css';
 
-export default function Header({ currentPage, setCurrentPage }) {
+export default function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.leftSection}>
-        <div className={styles.logo} onClick={() => setCurrentPage('catalog')}>
+        <Link to="/catalog" className={styles.logo}>
           <span className={styles.logoIcon}>∿</span> RiffLink
-        </div>
+        </Link>
         <input 
           type="text" 
           placeholder="🔍 Пошук гітариста, стилю або обладнання..." 
@@ -15,24 +16,24 @@ export default function Header({ currentPage, setCurrentPage }) {
         />
       </div>
       <nav className={styles.nav}>
-        <button 
-          className={`${styles.navBtn} ${currentPage === 'catalog' ? styles.activeBtn : ''}`}
-          onClick={() => setCurrentPage('catalog')}
+        <NavLink 
+          to="/catalog" 
+          className={({ isActive }) => `${styles.navBtn} ${isActive ? styles.activeBtn : ''}`}
         >
           Каталог гітаристів
-        </button>
-        <button 
-          className={`${styles.navBtn} ${currentPage === 'profile' ? styles.activeBtn : ''}`}
-          onClick={() => setCurrentPage('profile')}
+        </NavLink>
+        <NavLink 
+          to="/profile" 
+          className={({ isActive }) => `${styles.navBtn} ${isActive ? styles.activeBtn : ''}`}
         >
           Профіль виконавця
-        </button>
-        <button 
-          className={`${styles.navBtn} ${currentPage === 'workspace' ? styles.activeBtn : ''}`}
-          onClick={() => setCurrentPage('workspace')}
+        </NavLink>
+        <NavLink 
+          to="/workspace" 
+          className={({ isActive }) => `${styles.navBtn} ${isActive ? styles.activeBtn : ''}`}
         >
           Робоча зона замовлення
-        </button>
+        </NavLink>
       </nav>
     </header>
   );

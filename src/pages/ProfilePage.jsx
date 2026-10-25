@@ -1,9 +1,12 @@
+import { useNavigate } from 'react-router-dom';
 import styles from './ProfilePage.module.css';
 
-export default function ProfilePage({ setCurrentPage }) {
+export default function ProfilePage() {
+  const navigate = useNavigate();
+
   return (
     <div className={styles.container}>
-      <button className={styles.backBtn} onClick={() => setCurrentPage('catalog')}>
+      <button className={styles.backBtn} onClick={() => navigate('/catalog')}>
         ← Назад до каталогу
       </button>
 
@@ -29,7 +32,7 @@ export default function ProfilePage({ setCurrentPage }) {
 
           <div className={styles.sectionTitle}>Про виконавця</div>
           <p className={styles.bio}>
-            Сесійний гітарист із 12-річним досвідом. Записував партії для реклами, кіно та інді-гуртів. Швидко відчуваю настрій треку й додаю живий вайб.
+            Сесійний гітарист із 12-річним досвідом. Записував партії для реклами, кіно та інді-гуртів.
           </p>
 
           <div className={styles.specGrid}>
@@ -50,15 +53,6 @@ export default function ProfilePage({ setCurrentPage }) {
             <div className={styles.specCard}>Marshall JVM</div>
             <div className={styles.specCard}>Neural DSP</div>
           </div>
-
-          <div className={styles.sectionTitle}>🎵 Приклади партій</div>
-          <div className={styles.wavePlayer}>
-            <button style={{ borderRadius: '50%', border: 'none', width: '36px', height: '36px', cursor: 'pointer' }}>▶</button>
-            <div style={{ flex: 1 }}>
-              <div style={{ fontSize: '0.85rem', fontWeight: 600 }}>Modern Rock — приспів</div>
-              <div style={{ color: '#555', fontSize: '0.75rem', marginTop: '0.2rem' }}>░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░ 0:00 / 0:42</div>
-            </div>
-          </div>
         </div>
 
         <aside className={styles.orderCard}>
@@ -66,13 +60,7 @@ export default function ProfilePage({ setCurrentPage }) {
           <div className={styles.priceVal}>500 грн</div>
           <div className={styles.priceSub}>за запис партії</div>
 
-          <ul className={styles.featureList}>
-            <li>✔ До 2 правок безкоштовно</li>
-            <li>✔ Формат WAV 24-bit / 48 kHz</li>
-            <li>✔ Термін: 2–4 дні</li>
-          </ul>
-
-          <button className={styles.mainOrderBtn} onClick={() => setCurrentPage('workspace')}>
+          <button className={styles.mainOrderBtn} onClick={() => navigate('/workspace')}>
             Замовити партію
           </button>
         </aside>
