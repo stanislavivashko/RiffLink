@@ -1,26 +1,46 @@
-import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import styles from './WorkspacePage.module.css';
 
 export default function WorkspacePage() {
-  const navigate = useNavigate();
+  const location = useLocation();
+  const selectedGuitarist = location.state?.guitarist || { name: 'Не обрано' };
+
+  const [comment, setComment] = useState('');
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleSendOrder = (e) => {
+    e.preventDefault();
+    setIsSubmitted(true);
+  };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', minHeight: 'calc(100vh - 70px)' }}>
-      <div className={styles.container}>
-        <div className={styles.iconBox}>🎧</div>
-        <div className={styles.title}>Немає активного замовлення</div>
-        <p className={styles.text}>
-          Оберіть гітариста в каталозі та натисніть «Замовити партію», щоб відкрити робочу зону з чатом.
-        </p>
-        <button className={styles.catalogBtn} onClick={() => navigate('/catalog')}>
-          Перейти до каталогу
-        </button>
-      </div>
+    <div className={styles.workspaceContainer}>
+      <h2>Робоча зона замовлення</h2>
+      <p>Виконавець: <strong>{selectedGuitarist.name}</strong></p>
 
-      <footer className={styles.footer}>
-        <div>© 2026 RiffLink — маркетплейс сесійних гітаристів</div>
-        <div>Живі гітари для твоїх треків</div>
-      </footer>
+      {isSubmitted ? (
+        <div className={styles.successMessage}>
+          ✓ Замовлення успішно відправлено гітаристу {selectedGuitarist.name}!
+        </div>
+      ) : (
+        <form onSubmit={handleSendOrder} className={styles.orderForm}>
+          <div className={styles.inputGroup}>
+            <label>Технічне завдання / Коментар до треку</label>
+            <textarea
+              rows="5"
+              placeholder="Опишіть бажану партію, темп, стрій та побажання щодо звучання..."
+              value={comment}
+              onChange={(e) => setComment(e.target.value)}
+              required
+            />
+          </div>
+
+          <button type="submit" className={styles.submitOrderBtn}>
+            Підтвердити та відправити ТЗ
+          </button>
+        </form>
+      )}
     </div>
   );
 }

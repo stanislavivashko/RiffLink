@@ -3,6 +3,7 @@ import Header from './components/Header';
 import CatalogPage from './pages/CatalogPage';
 import ProfilePage from './pages/ProfilePage';
 import WorkspacePage from './pages/WorkspacePage';
+import LoginPage from './pages/LoginPage';
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
           <Route path="/catalog" element={<CatalogPage />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/workspace" element={<WorkspacePage />} />
+          <Route path="/login" element={<LoginPage />} />
           <Route path="*" element={<Navigate to="/catalog" replace />} />
         </Routes>
       </main>
