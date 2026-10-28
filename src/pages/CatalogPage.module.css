@@ -1,8 +1,9 @@
 .container {
-  padding: 2rem 4rem;
-  background-color: #080808;
-  color: #fff;
-  min-height: calc(100vh - 70px);
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 20px 40px;
+  box-sizing: border-box;
 }
 
 .title {
@@ -19,7 +20,8 @@
 
 .content {
   display: flex;
-  gap: 2rem;
+  gap: 30px;
+  width: 100%;
 }
 
 .sidebar {
@@ -86,6 +88,7 @@
 
 .mainContent {
   flex: 1;
+  width: 100%;
 }
 
 .resultsCount {
@@ -97,7 +100,8 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.2rem;
+  gap: 24px;
+  width: 100%;
 }
 
 .card {

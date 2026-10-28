@@ -1,11 +1,13 @@
 .header {
+  width: 100vw;
+  max-width: 100% !important; 
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.8rem 2rem;
+  padding: 16px 40px;
   background-color: #0d0d0d;
   border-bottom: 1px solid #1f1f1f;
-  color: #fff;
+  box-sizing: border-box;
 }
 
 .leftSection {
@@ -64,7 +66,19 @@
 }
 
 .activeBtn {
-  background: #ffffff;
+  background-color: #ffffff;
   color: #000;
-  font-weight: 600;
+  text-decoration: none !important;
+}
+
+
+.navBtn,
+.logo,
+.nav a {
+  text-decoration: none !important;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }
