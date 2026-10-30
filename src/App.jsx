@@ -4,6 +4,7 @@ import CatalogPage from './pages/CatalogPage';
 import ProfilePage from './pages/ProfilePage';
 import WorkspacePage from './pages/WorkspacePage';
 import LoginPage from './pages/LoginPage';
+import HomePage from './pages/HomePage';
 
 export default function App() {
   return (
@@ -11,8 +12,8 @@ export default function App() {
       <Header />
       <main style={{ width: '100%', boxSizing: 'border-box' }}>
         <Routes>
-          <Route path="/" element={<Navigate to="/catalog" replace />} />
           <Route path="/catalog" element={<CatalogPage />} />
+          <Route path="/" element={<HomePage />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/workspace" element={<WorkspacePage />} />
           <Route path="/login" element={<LoginPage />} />
